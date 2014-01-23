@@ -1,6 +1,6 @@
 var commander   = require('commander');
 var fs          = require('fs');
-var xslxParse   = require('excel');
+var xlsxParse   = require('excel');
 var ArrayStream = require('arraystream');
 var utils       = require('./lib/utils');
 var months      = require('./lib/months');
@@ -34,9 +34,9 @@ if (outputfile === undefined) {
 streams.createFileOutStream(__dirname + '/output/' + outputfile);
 
 // Kick off the parsing process...
-xslxParse(commander.in, function xslxParseCallback (err, data) {
+xlsxParse(commander.in, function xlsxParseCallback (err, data) {
   if (err) {
-    utils.displayError('Could not parse xslx file - ' + err);
+    utils.displayError('Could not parse xlsx file - ' + err);
   }
 
   // Remove the first line of data containing the column headings
