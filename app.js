@@ -2,6 +2,7 @@ var commander   = require('commander');
 var fs          = require('fs');
 var xlsxParse   = require('excel');
 var ArrayStream = require('arraystream');
+var chalk       = require('chalk');
 var utils       = require('./lib/utils');
 var months      = require('./lib/months');
 var streams     = require('./lib/streams');
@@ -44,10 +45,10 @@ xlsxParse(commander.in, function xlsxParseCallback (err, data) {
 
   // Setup stream event handlers
   streams.fileout.on('finish', function () {
-    console.log('--- Finished');
+    console.log(chalk.green('\n--- Finished ---\n'));
   });
 
-  console.log('--- Processing Events');
+  console.log(chalk.green('--- Processing Events ---\n'));
 
   ArrayStream.create(data)
     .pipe(streams.createEvent)

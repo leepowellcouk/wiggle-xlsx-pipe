@@ -1,21 +1,26 @@
 {
-  "name": "Wiggle Parser",
-  "version": "0.0.1",
+  "name": "wiggle-xlsx-pipe",
   "description": "Parses Wiggle Event Spreadsheet Data into JSON file.",
+  "version": "0.0.1",
   "main": "app.js",
   "dependencies": {
+    "arraystream": "~0.0.5",
+    "chalk": "^1.1.1",
+    "commander": "~2.1.0",
     "ent": "~0.1.0",
     "excel": "~0.1.0",
-    "arraystream": "~0.0.5",
     "q": "~1.0.0",
     "request": "~2.33.0",
     "through": "~2.3.4",
     "trumpet": "~1.6.3",
-    "commander": "~2.1.0"
+    "del": "^2.0.2"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "node scripts/clean-output.js",
+    "pretest": "npm run clean -s",
+    "test": "node app.js --in input/events-test.xlsx --out final-test.json",
+    "prefull": "npm run clean -s",
+    "full": "node app.js --in input/events-final.xlsx --out final-output.json"
   },
   "author": "Lee Powell <lee@leepowell.co.uk> (http://leepowell.co.uk/)",
   "license": "MIT"
